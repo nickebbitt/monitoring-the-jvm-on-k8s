@@ -1,4 +1,4 @@
-# Monitoring the JVM on Kubernetes with Prometheus
+# Monitoring the JVM on Kubernetes
 
 ## Pre-requisites
 
