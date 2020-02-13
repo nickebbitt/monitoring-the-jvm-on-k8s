@@ -22,4 +22,6 @@ This will enable the following capabilities:
 
 ## Expose the services
 
-We'll use [port-forwarding](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) to expose the services running on the cluster to your local machine. The `port-forwading.sh` script will do this for us.
+We'll use [port-forwarding](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) to expose the services running on the cluster to your local machine. 
+
+The `port-forwading.sh` script will do this for us.
