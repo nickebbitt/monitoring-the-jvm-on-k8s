@@ -18,8 +18,8 @@ To bootstrap your minikube cluster simply run the `setup.sh` script.
 This will enable the following capabilities:
 
 - A Kubernetes cluster on v.1.15.9
-- Initialised with Helm 2
-- Prometheus operator
+- Helm 2
+- Prometheus operator (via [helm](https://github.com/helm/charts/tree/master/stable/prometheus-operator))
 
 ## Expose the Prometheus services on your local host
 
