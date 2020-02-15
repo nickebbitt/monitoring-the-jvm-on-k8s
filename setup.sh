@@ -16,7 +16,7 @@ echo
 echo "Creating minikube Kubernetes cluster on v${K8s_VERSION}..."
 echo
 
-minikube start --kubernetes-version=${K8s_VERSION}
+minikube start --kubernetes-version=${K8s_VERSION} --cpus=4 --memory=4000mb
 
 echo
 echo "Initialising Helm..."
@@ -27,8 +27,3 @@ echo
 echo "Deploying the prometheus operator Helm chart..."
 echo
 helm install --name prometheus --namespace monitoring stable/prometheus-operator --wait
-
-echo 
-echo "Installing monkeynetes Helm chart..."
-echo
-helm install monkeynetes --name monkeynetes  
