@@ -47,7 +47,7 @@ kubectl -n monitoring get secret prometheus-prometheus-prometheus-oper-prometheu
 
 ### Grafana username & password
 
-Stored in a secret:
+The username & password for Grafana are stored in a secret:
 
 ```bash
 kubectk get secret -n monitoring prometheus-grafana -ojson | jq -r '.data["admin-user"]' | base64 -d

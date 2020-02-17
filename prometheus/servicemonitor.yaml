@@ -15,6 +15,5 @@ spec:
       type: jvm
   endpoints:
   - port: metrics            # works for different port numbers as long as the name matches
-    path: /actuator/prometheus
     interval: 10s        # scrape the endpoint every 10 seconds
   
