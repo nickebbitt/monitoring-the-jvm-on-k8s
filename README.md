@@ -44,3 +44,14 @@ The application we will deploy is called `monkeynetes` and it is designed to sim
 ```bash
 kubectl -n monitoring get secret prometheus-prometheus-prometheus-oper-prometheus -ojson | jq -r '.data["prometheus.yaml.gz"]' | base64 -d | gunzip
 ```
+
+### Grafana username & password
+
+Stored in a secret:
+
+```bash
+kubectk get secret -n monitoring prometheus-grafana -ojson | jq -r '.data["admin-user"]' | base64 -d
+kubectl get secret -n monitoring prometheus-grafana -ojson | jq -r '.data["admin-password"]' | base64 -d
+```
+
+The defaults are `admin/prom-operator` and as we are running this locally via Minikube we won't worry about making it more secure.
