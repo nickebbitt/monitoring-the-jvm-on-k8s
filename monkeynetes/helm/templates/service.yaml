@@ -1,15 +1,19 @@
 apiVersion: v1
 kind: Service
 metadata:
+  name: {{ include "monkeynetes.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "monkeynetes.name" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-  name: monkeynetes
+{{ include "monkeynetes.labels" . | indent 4 }}
 spec:
   ports:
   - port: 8080
     protocol: TCP
     targetPort: 8080
+    name: http
+  - port: 9090
+    protocol: TCP
+    targetPort: 9090
+    name: metrics
   selector:
     app.kubernetes.io/instance: monkeynetes
     app.kubernetes.io/name: monkeynetes

@@ -11,4 +11,4 @@ docker-compose build
 echo 
 echo "Deploy monkeynetes Helm chart..."
 echo
-helm install monkeynetes/helm --name monkeynetes  --wait 
+helm install monkeynetes/helm --name monkeynetes

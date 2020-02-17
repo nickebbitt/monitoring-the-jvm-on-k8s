@@ -1,7 +1,12 @@
 management:
+  server:
+    port: 9090
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: "prometheus"
+  endpoint:
+    metrics:
+      enabled: true
 
 fail-on-start: 1

@@ -31,4 +31,16 @@ The `port-forwading.sh` script will do this for us.
 
 The application we will deploy is called `monkeynetes` and it is designed to simulate various failure scenarios.
 
-`monkeynetes` is inspired by a similar internal application created at [Auto Trader UK](https://careers.autotrader.co.uk/), used to test and validate various behaviour of their internal delivery platform.
+`monkeynetes` is inspired by a similar internal application created at [Auto Trader UK](https://careers.autotrader.co.uk/), used to test and validate various behaviours of their internal Kubernetes based delivery platform.
+
+```bash
+./deploy-monkeynetes.sh
+```
+
+## Troubleshooting
+
+### Check your prometheus config
+
+```bash
+kubectl -n monitoring get secret prometheus-prometheus-prometheus-oper-prometheus -ojson | jq -r '.data["prometheus.yaml.gz"]' | base64 -d | gunzip
+```

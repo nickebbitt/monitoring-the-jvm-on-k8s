@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: jvm
+  labels:
+    release: prometheus
+    type: jvm
+spec:
+  jobLabel: jvm
+  namespaceSelector:
+    matchNames:
+    - default
+  selector:
+    matchLabels:
+      type: jvm
+  endpoints:
+  - port: metrics            # works for different port numbers as long as the name matches
+    path: /actuator/prometheus
+    interval: 10s        # scrape the endpoint every 10 seconds
+  

@@ -12,7 +12,6 @@ buildscript {
         classpath("org.springframework:springloaded:1.2.6.RELEASE")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
         classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
-
     }
 }
 
