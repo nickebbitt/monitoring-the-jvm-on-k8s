@@ -20,6 +20,11 @@ spec:
         - name: {{ .Chart.Name }}
           image: monkeynetes:latest
           imagePullPolicy: "Never"
+          resources:
+            limits:
+              memory: "200Mi"
+            requests:
+              memory: "100Mi"
           ports:
             - name: http
               containerPort: 8080
