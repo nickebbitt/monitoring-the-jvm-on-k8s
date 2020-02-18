@@ -29,6 +29,11 @@ echo
 helm install --name prometheus --namespace monitoring stable/prometheus-operator --wait
 
 echo
-echo "Create service monitor to discover jvm apps..."
+echo "Create service monitor to discover JVM apps..."
 echo
 kubectl apply -f prometheus/servicemonitor.yaml -n monitoring
+
+echo
+echo "Create JVM Metrics Grafana dashboard..."
+echo
+kubectl -n monitoring apply -f prometheus/jvm-metrics-configmap.yaml 
