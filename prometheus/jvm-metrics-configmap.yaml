@@ -15,7 +15,9 @@ data:
             "enable": true,
             "hide": true,
             "iconColor": "rgba(0, 211, 255, 1)",
+            "limit": 100,
             "name": "Annotations & Alerts",
+            "showIn": 0,
             "type": "dashboard"
           }
         ]
@@ -24,8 +26,7 @@ data:
       "editable": true,
       "gnetId": 3066,
       "graphTooltip": 1,
-      "id": 26,
-      "iteration": 1582063715412,
+      "iteration": 1582065868805,
       "links": [],
       "panels": [
         {
@@ -343,7 +344,7 @@ data:
               "format": "time_series",
               "interval": "",
               "intervalFactor": 5,
-              "legendFormat": "{{gc}} [{{pod_name}}]",
+              "legendFormat": "{{gc}}",
               "metric": "",
               "refId": "A",
               "step": 10
@@ -679,7 +680,7 @@ data:
               "format": "time_series",
               "interval": "",
               "intervalFactor": 5,
-              "legendFormat": "{{gc}} [{{pod_name}}]",
+              "legendFormat": "{{gc}}",
               "metric": "jvm_gc_collection_seconds_sum",
               "refId": "A",
               "step": 10
@@ -1180,7 +1181,7 @@ data:
               "expr": "jvm_threads_current{namespace=\"$namespace\",pod=\"$pod\"}",
               "format": "time_series",
               "intervalFactor": 5,
-              "legendFormat": "current [{{pod_name}}]",
+              "legendFormat": "current",
               "metric": "jvm_threads_current",
               "refId": "A",
               "step": 10
@@ -1189,7 +1190,7 @@ data:
               "expr": "jvm_threads_daemon{namespace=\"$namespace\",pod=\"$pod\"}",
               "format": "time_series",
               "intervalFactor": 5,
-              "legendFormat": "daemon [{{pod_name}}]",
+              "legendFormat": "daemon",
               "metric": "jvm_threads_daemon",
               "refId": "B",
               "step": 10
@@ -1522,7 +1523,6 @@ data:
           {
             "allValue": null,
             "current": {
-              "tags": [],
               "text": "default",
               "value": "default"
             },
@@ -1549,8 +1549,8 @@ data:
             "allValue": null,
             "current": {
               "tags": [],
-              "text": "monkeynetes-5db75555cb-vbvbc",
-              "value": "monkeynetes-5db75555cb-vbvbc"
+              "text": "monkeynetes-5d47966ddd-vzswz",
+              "value": "monkeynetes-5d47966ddd-vzswz"
             },
             "datasource": "Prometheus",
             "definition": "query_result(sum(jvm_info{namespace=\"$namespace\"}) by (pod))",
@@ -1574,7 +1574,7 @@ data:
         ]
       },
       "time": {
-        "from": "now-30m",
+        "from": "now-15m",
         "to": "now"
       },
       "timepicker": {
@@ -1604,6 +1604,6 @@ data:
       "timezone": "",
       "title": "JVM Metrics",
       "uid": "jvm-metrics",
-      "version": 1
+      "version": 2
     }
  
