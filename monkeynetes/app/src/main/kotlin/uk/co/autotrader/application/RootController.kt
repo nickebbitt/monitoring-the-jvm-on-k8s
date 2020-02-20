@@ -14,6 +14,6 @@ constructor() {
 
     @GetMapping
     fun hello(): ResponseEntity<String> {
-        return ResponseEntity.ok("<p>This monkey is running and ready to cause some chaos. <br /><br />see <a href='https://github.atcloud.io/AutoTrader/monkeynetes'>https://github.atcloud.io/AutoTrader/monkeynetes</a> to find out how.</p>")
+        return ResponseEntity.ok("This monkey is running and ready to cause some chaos.")
     }
 }
