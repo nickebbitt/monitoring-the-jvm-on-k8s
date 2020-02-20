@@ -13,7 +13,7 @@ Tools:
 
 _NOTE: these instructions have been tested on MacOS Catalina 10.5._
 
-To bootstrap your minikube cluster simply run the `setup.sh` script.
+To bootstrap your `minikube` cluster simply run the `setup.sh` script.
 
 This will enable the following capabilities:
 

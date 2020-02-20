@@ -17,14 +17,15 @@ spec:
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       containers:
-        - name: {{ .Chart.Name }}
-          image: monkeynetes:latest
+        - name: master
+          image: monkeynetes
           imagePullPolicy: "Never"
           resources:
             limits:
-              memory: "200Mi"
+              memory: "1000Mi"
             requests:
-              memory: "100Mi"
+              memory: "800Mi"
+              cpu: 1
           ports:
             - name: http
               containerPort: 8080
