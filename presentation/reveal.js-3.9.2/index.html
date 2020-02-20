@@ -35,8 +35,52 @@
 				<section>
 					<section id="fragments">
 						<h2>What we'll cover</h2>
-						<p><span class="fragment">Monitoring </span> <span class="fragment">the JVM</span> <span class="fragment">on Kubernetes</span> <span class="fragment">with Prometheus</span</p>
+						<p><span class="fragment">Monitoring </span> <span class="fragment">the JVM</span> <span class="fragment">on Kubernetes</span> <span class="fragment">with Prometheus</span></p>
+						<p class="fragment">The perspective of a platform engineer</p>
 					</section>
+				</section>
+				<section>
+					<section id="fragments">
+						<h2>Monitoring</h2>
+						<p class="fragment">Telemetry: Logs, Metrics, Traces</p>						
+						<p class="fragment">Monitoring != Observability</p>
+					</section>
+				</section>
+				<section>
+					<h2>The JVM</h2>
+					<p>Languages: Java, Groovy, Clojure, Scala, Kotlin...</p>
+					<p>Frameworks: Spring/SpringBoot, Dropwizard, Jakarta EE, Microprofile, Quarkus, Micronaut...</p>
+				</section>
+				<section>
+					<h2>Kubernetes</h2>
+					<p>An open-source system for automating deployment, scaling, and management of containerized applications.</p>
+				</section>
+				<section>
+					<h2>Prometheus</h2>
+					<p>An open-source systems monitoring and alerting toolkit.</p>
+					<p>Time-series metrics, dimensional, PromQL</p>
+					<p>Visualisation, Alerting</p>
+					<p>Prometheus operator on K8s</p>
+					<p>Client libraries e.g. <a href="https://github.com/prometheus/client_java">https://github.com/prometheus/client_java</a></p>
+				</section>
+				<section>
+					<h2>Prometheus operator on K8s</h2>
+					<img src="https://kruschecompany.com/wp-content/uploads/2019/10/prometheus-architecture.png">
+					<p><a href="https://kruschecompany.com/wp-content/uploads/2019/10/prometheus-architecture.png">https://kruschecompany.com/wp-content/uploads/2019/10/prometheus-architecture.png</a></p>
+				</section>
+				<section>
+					<h2>What else can we do?</h2>
+					<p>Alerting integrations e.g. Slack, Pager Duty</p>
+					<p>Heap dumps on JVM failure, and on demand</p>
+					<p>GC logs</p>
+				</section>
+				<section class="small">
+					<h2>More info</h2>
+					<p><a href="https://github.com/nickebbitt/monitoring-the-jvm-on-k8s">github.com/nickebbitt/monitoring-the-jvm-on-k8s</a></p>
+					<p><a href="https://github.com/autotraderuk/monkeynetes">github.com/autotraderuk/monkeynetes</a></p>
+					<p><a href="https://github.com/coreos/prometheus-operator">github.com/coreos/prometheus-operator</a></p>
+					<p><a href="https://sysdig.com/blog/kubernetes-monitoring-prometheus-operator-part3/">sysdig.com/blog/kubernetes-monitoring-prometheus-operator-part3/</a></p>
+					<p><a href="https://kruschecompany.com/kubernetes-prometheus-operator/">kruschecompany.com/kubernetes-prometheus-operator/</a></p>
 				</section>
 			</div>
 		</div>
@@ -54,7 +98,8 @@
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/highlight/highlight.js' },
 					{ src: 'plugin/notes/notes.js', async: true }
-				]
+				],
+				transition: 'convex' 
 			});
 		</script>
 	</body>
