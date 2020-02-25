@@ -13,7 +13,7 @@ Tools:
 
 _NOTE: these instructions have been tested on MacOS Catalina 10.5._
 
-To bootstrap your `minikube` cluster simply run the `setup.sh` script.
+To bootstrap your `minikube` cluster simply run the `bootstrap.sh` script.
 
 This will enable the following capabilities:
 
@@ -29,12 +29,12 @@ The `port-forwading.sh` script will do this for us.
 
 ## Deploy an app
 
-The application we will deploy is called `monkeynetes` and it is designed to simulate various failure scenarios.
+The application we will deploy is called [Chaos Kraken](https://github.com/autotraderuk/chaos-kraken) and it is designed to simulate various failure scenarios.
 
-`monkeynetes` is inspired by a similar internal application created at [Auto Trader UK](https://careers.autotrader.co.uk/), used to test and validate various behaviours of their internal Kubernetes based delivery platform.
+[Chaos Kraken](https://github.com/autotraderuk/chaos-kraken) is an open source project created at [Auto Trader UK](https://careers.autotrader.co.uk/). It is used to test and validate various behaviours of their Kubernetes based delivery platform.
 
 ```bash
-./deploy-monkeynetes.sh
+./deploy-chaos-kraken.sh
 ```
 
 ## Troubleshooting

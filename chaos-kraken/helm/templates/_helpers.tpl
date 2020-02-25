@@ -2,7 +2,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "monkeynetes.name" -}}
+{{- define "chaos-kraken.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
@@ -11,7 +11,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "monkeynetes.fullname" -}}
+{{- define "chaos-kraken.fullname" -}}
 {{- if .Values.fullnameOverride -}}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" -}}
 {{- else -}}
@@ -27,16 +27,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "monkeynetes.chart" -}}
+{{- define "chaos-kraken.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{/*
 Common labels
 */}}
-{{- define "monkeynetes.labels" -}}
-app.kubernetes.io/name: {{ include "monkeynetes.name" . }}
-helm.sh/chart: {{ include "monkeynetes.chart" . }}
+{{- define "chaos-kraken.labels" -}}
+app.kubernetes.io/name: {{ include "chaos-kraken.name" . }}
+helm.sh/chart: {{ include "chaos-kraken.chart" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
@@ -48,9 +48,9 @@ type: jvm
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "monkeynetes.serviceAccountName" -}}
+{{- define "chaos-kraken.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
-    {{ default (include "monkeynetes.fullname" .) .Values.serviceAccount.name }}
+    {{ default (include "chaos-kraken.fullname" .) .Values.serviceAccount.name }}
 {{- else -}}
     {{ default "default" .Values.serviceAccount.name }}
 {{- end -}}

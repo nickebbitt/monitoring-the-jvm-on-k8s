@@ -12,7 +12,7 @@ sleep 5
 echo
 echo "Opening new browser tabs..."
 
-open -na "Google Chrome" --args --new-window "http://localhost:9090/" "http://localhost:3000/" "http://localhost:9093/"
+open -na "Google Chrome" --args "http://localhost:9090/" "http://localhost:3000/" "http://localhost:9093/"
 
 echo "Hit any key to finish..."
 read 

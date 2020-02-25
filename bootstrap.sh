@@ -5,6 +5,12 @@ set -o pipefail
 set -o nounset
 
 echo
+echo "Deleting existing minikube cluster, if it exists..."
+echo
+
+minikube delete -p monitoring-the-jvm
+
+echo
 echo "Setting the Kube context to minikube..."
 echo
 
@@ -16,7 +22,7 @@ echo
 echo "Creating minikube Kubernetes cluster on v${K8s_VERSION}..."
 echo
 
-minikube start --kubernetes-version=${K8s_VERSION} --cpus=4 --memory=4000mb
+minikube start -p monitoring-the-jvm --kubernetes-version=${K8s_VERSION} --cpus=8 --memory=4000mb
 
 echo
 echo "Initialising Helm..."
@@ -29,11 +35,13 @@ echo
 helm install --name prometheus --namespace monitoring stable/prometheus-operator --wait
 
 echo
-echo "Create service monitor to discover JVM apps..."
-echo
-kubectl apply -f prometheus/servicemonitor.yaml -n monitoring
+echo "Hit any key to deploy the Chaos Kraken..."
+read 
+./deploy-chaos-kraken.sh
 
 echo
-echo "Create JVM Metrics Grafana dashboard..."
-echo
+echo "Hit any key to install custom prometheus config for JVM metrics..."
+read 
+kubectl -n monitoring apply -f prometheus/servicemonitor.yaml 
+kubectl -n monitoring apply -f prometheus/prometheusrule.yaml
 kubectl -n monitoring apply -f prometheus/jvm-metrics-configmap.yaml 

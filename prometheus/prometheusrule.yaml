@@ -1,0 +1,56 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: prometheus-operator
+    release: prometheus
+  name: prometheus-jvm-rules
+spec:
+  groups:
+  - name: jvm-alerts
+    rules:
+    - alert: ContainerRestarted
+      expr: |
+        count(
+          sum(
+            increase(
+              kube_pod_container_status_restarts_total{namespace="default"}[5m]
+            ) > 1
+          ) by (namespace, pod, container)
+        ) by (namespace, pod, container)
+      for: 1m
+      labels:
+        severity: info
+        source: '{{ "{{" }}$labels.namespace{{ "}}" }}'
+      annotations:
+        instance: '{{ "{{" }}$labels.pod{{ "}}" }}/{{ "{{" }}$labels.container{{ "}}" }}'
+        description: >-
+          A container has stopped, and has been automatically restarted by the platform.
+          Please investigate why the container stopped, as they should run indefinitely.
+          This alert serves as a notification and will automatically resolve shortly.
+        summary: Application instance restarted
+    - alert: ContainerFrequentlyRestarting
+      expr: |
+        count(
+          sum(
+            increase(
+              kube_pod_container_status_restarts_total{namespace="default"}[30m]
+            ) > 3
+          ) by (namespace, pod, container)
+          *
+          count(
+            max_over_time(
+              kube_pod_container_status_restarts_total{namespace="default"}[1m]
+            ) > 0
+          ) by (namespace, pod, container)
+        ) by (namespace, pod, container)
+      for: 1m
+      labels:
+        severity: critical
+        source: '{{ "{{" }}$labels.namespace{{ "}}" }}'
+      annotations:
+        instance: '{{ "{{" }}$labels.pod{{ "}}" }}/{{ "{{" }}$labels.container{{ "}}" }}'
+        description: >-
+          A container has restarted multiple times in the last 30 minutes indicating a consistently failing state
+          that requires more immediate attention. 
+        summary: Application instance is frequently restarting
