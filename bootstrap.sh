@@ -7,22 +7,20 @@ set -o nounset
 echo
 echo "Deleting existing minikube cluster, if it exists..."
 echo
-
-minikube delete -p monitoring-the-jvm
+minikube delete
 
 echo
-echo "Setting the Kube context to minikube..."
+echo "Creating minikube Kubernetes cluster..."
 echo
-
+minikube start --kubernetes-version=1.15.9 --cpus=8 --memory=4000mb
 kubectx minikube
 
-K8s_VERSION=1.15.9
-
 echo
-echo "Creating minikube Kubernetes cluster on v${K8s_VERSION}..."
+echo "Pre-cache some of the Docker images we'll need..."
 echo
-
-minikube start -p monitoring-the-jvm --kubernetes-version=${K8s_VERSION} --cpus=8 --memory=4000mb
+eval $(minikube docker-env)
+docker pull gradle:jdk11
+docker pull adoptopenjdk/openjdk11
 
 echo
 echo "Initialising Helm..."

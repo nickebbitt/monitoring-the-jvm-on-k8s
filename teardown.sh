@@ -7,5 +7,4 @@ set -o nounset
 echo
 echo "Deleting minikube cluster..."
 echo
-
-minikube delete -p monitoring-the-jvm
+minikube delete
